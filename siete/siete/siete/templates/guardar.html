@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guardar</title>
+    <style>
+        form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        form *{
+            max-width: 20%;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+  <form action="/salvar/" method="post">
+     {% csrf_token %}
+    <h3>GUARDAR MATERIA</h3>
+
+    <label for="codigo">Codigo:</label>
+    <input type="text" name="codigo"> <!-- codigo no vacio,codigo entre 3 y 6 digitos,codigo no letras -->
+     {% if status.codigovacio %}
+      <p style="background-color: red">{{status.codigovacio}}</p>
+     {% endif %}
+     {% if status.codigolargo %}
+      <p style="background-color: red">{{status.codigolargo}}</p>
+     {% endif %}
+     {% if status.codigoletra %}
+      <p style="background-color: red">{{status.codigoletra}}</p>
+     {% endif %}
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre"> <!--nombre no vacio, cantidad caracteres max 15-->
+    {% if status.nombrevacio %}
+      <p style="background-color: red">{{status.nombrevacio}}</p>
+     {% endif %}
+     {% if status.nombrelargo %}
+      <p style="background-color: red">{{status.nombrelargo}}</p>
+     {% endif %}
+
+    <label for="carrera">Carrera:</label><!--carrera no vacio, cantidad caracteres max 15-->
+    <input type="text" name="carrera">
+    {% if status.carreravacio %}
+      <p style="background-color: red">{{status.carreravacio}}</p>
+     {% endif %}
+    {% if status.carreralargo %}
+     <p style="background-color: red">{{status.carreralargo}}</p>
+    {% endif %}
+
+    <label for="semestre">Semestre:</label><!--semestre no vacio, cantidad caracteres max 15-->
+    <input type="text" name="semestre">
+    {% if status.semestrevacio %}
+      <p style="background-color: red">{{status.semestrevacio}}</p>
+     {% endif %}
+     {% if status.semestrelargo %}
+      <p style="background-color: red">{{status.semestrelargo}}</p>
+     {% endif %}
+  
+
+    <input type="submit" value="Guardar">
+  </form> 
+</body>
+</html>
