@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar</title>
+    <style>
+        form{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        form *{
+            margin: 7px;
+        }
+        body{background-color: aqua;}
+    </style>
+
+</head>
+<body>
+
+    <form action="/guardar/" method="post">
+        {%csrf_token%}
+        <h1>Guardar materia</h1>
+        <label for="codigo">Codigo:</label>
+        <input type="text" name="codigo" value="{%if codigo%}{{codigo}}{%endif%}"><!--no vacio, tamaño entre 3 y 6 digitos, solo numeros-->
+        {% if error.codigovacio %}
+          <p style="background-color: red">{{error.codigovacio}}</p>
+        {%endif%}
+        {% if error.codigorango %}
+          <p style="background-color: red">{{error.codigorango}}</p>
+        {%endif%}
+        {% if error.errorletra %}
+          <p style="background-color: red">{{error.errorletra}}</p>
+        {%endif%}
+        {%if not error.codigovacio and not error.codigorango and not error.errorletra and codigo%}
+         <p style="background-color:green">codigo OK</p>
+        {%endif%}
+        <label for="nombre">Nombre:</label><!--no vacio, tamaño menor a 15 caracteres-->
+        <input type="text" name="nombre">
+        {% if error.nombrevacio %}
+          <p style="background-color: red">{{error.nombrevacio}}</p>
+        {%endif%}
+        {% if error.nombrelargo %}
+          <p style="background-color: red">{{error.nombrelargo}}</p>
+        {%endif%}
+
+        <label for="carrera">Carrera:</label><!--no vacio, tamaño menor a 15 caracteres-->
+        <input type="text" name="carrera">
+        {% if error.carreravacio %}
+          <p style="background-color: red">{{error.carreravacio}}</p>
+        {%endif%}
+        {% if error.carreralargo %}
+          <p style="background-color: red">{{error.carreralargo}}</p>
+        {%endif%}
+
+        <label for="semestre">Semestre:</label><!--no vacio, tamaño menor a 15 caracteres-->
+        <input type="text" name="semestre">
+        {% if error.semestrevacio %}
+          <p style="background-color: red">{{error.semestrevacio}}</p>
+        {%endif%}
+        {% if error.semestrelargo %}
+          <p style="background-color: red">{{error.semestrelargo}}</p>
+        {%endif%}
+
+        <input type="submit" value="Guardar">
+    </form>
+    
+</body>
+</html>

@@ -1,4 +1,4 @@
-"""registro URL Configuration
+"""registrador URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from registro.vista import registro
+from registrador.vista import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('crear/',registro)
+    path('register/',register)
 ]
