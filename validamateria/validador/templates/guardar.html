@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar</title>
+    <style>
+        form{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            font-size: 23px;
+        }
+        form *{
+            margin:6px
+        }
+        body{background-color: aqua;}
+    </style>
+</head>
+<body>
+    <form action="/guardar/" method="post">
+        {%csrf_token%}
+        <h2>Guardar materia</h2>
+
+        <label for="codigo">Codigo:</label>   
+        <input type="text" name="codigo" value="{%if codigo%}{{codigo}}{%endif%}"> <!--no vacio, codigo entre 3 y 6 digitos, no letras-->
+        {%if error.codigovacio %}
+         <p style="background-color: red">{{error.codigovacio}}</p>
+        {%endif%} 
+        {%if error.codigorango %}
+         <p style="background-color: red">{{error.codigorango}}</p>
+        {%endif%} 
+        {%if error.errorletra %}
+         <p style="background-color: red">{{error.errorletra}}</p>
+        {%endif%} 
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="{%if nombre%}{{nombre}}{%endif%}"><!--no vacio, max 15 caracteres-->
+        {%if error.nombrevacio %}
+         <p style="background-color: red">{{error.nombrevacio}}</p>
+        {%endif%} 
+        {%if error.nombrelargo %}
+         <p style="background-color: red">{{error.nombrelargo}}</p>
+        {%endif%} 
+
+        <label for="carrera">Carrera:</label>
+        <input type="text" name="carrera" value="{%if carrera%}{{carrera}}{%endif%}"><!--no vacio, max 15 caracteres-->
+        {%if error.carreravacio %}
+         <p style="background-color: red">{{error.carreravacio}}</p>
+        {%endif%} 
+        {%if error.carreralargo %}
+         <p style="background-color: red">{{error.carreralargo}}</p>
+        {%endif%} 
+
+        <label for="semestre">Semestre:</label>
+        <input type="text" name="semestre" value="{%if semestre%}{{semestre}}{%endif%}"><!--no vacio, max 15 caracteres-->
+        {%if error.semestrevacio %}
+         <p style="background-color: red">{{error.semestrevacio}}</p>
+        {%endif%} 
+        {%if error.semestrelargo %}
+         <p style="background-color: red">{{error.semestrelargo}}</p>
+        {%endif%} 
+
+        <input type="submit" value="Guardar">
+    </form>
+
+</body>
+</html>
