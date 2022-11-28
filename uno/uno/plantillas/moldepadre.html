@@ -1,0 +1,23 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <title>{%block titulo%} {%endblock%}</title>
+</head>
+<body>
+    {%include "cabecera5.html"%}
+    <section>
+    <h1>Youtube</h1>
+    <h2>video {%block categoria%} {%endblock%}</h2>
+    <h2>Este video se abrio en la fecha: {{fecha}}</h2>
+    {%block contenido%} 
+    
+    {%endblock%}    
+    </section>    
+    {%include "pie.html"%}
+</body>
+</html>
